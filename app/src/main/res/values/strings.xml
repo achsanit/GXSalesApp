@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GX Sales</string>
+    <string name="text_email">Email</string>
+    <string name="text_hint_email_text_field">e.g john@example.com</string>
+    <string name="text_password">Password</string>
+    <string name="text_sign_in">Sign In</string>
+    <string name="text_version_placeholder">GlobalXtreme \u00A9 2023 - V%s</string>
 </resources>
