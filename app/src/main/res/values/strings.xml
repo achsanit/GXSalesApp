@@ -5,4 +5,6 @@
     <string name="text_password">Password</string>
     <string name="text_sign_in">Sign In</string>
     <string name="text_version_placeholder">GlobalXtreme \u00A9 2023 - V%s</string>
+    <string name="message_invalid_input">Your input is invalid, please check again…</string>
+    <string name="ok">Ok</string>
 </resources>

@@ -2,6 +2,7 @@ package com.achsanit.gxsales.application
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import com.achsanit.gxsales.di.KoinInitializer
 
 class MyApplication: Application() {
 
@@ -9,6 +10,7 @@ class MyApplication: Application() {
         super.onCreate()
 
         disableDarkTheme()
+        KoinInitializer.init(this)
     }
 
     private fun disableDarkTheme() {
