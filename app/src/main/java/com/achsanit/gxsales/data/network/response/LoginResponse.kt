@@ -1,4 +1,4 @@
-package com.achsanit.gxsales.data.response
+package com.achsanit.gxsales.data.network.response
 
 import com.google.gson.annotations.SerializedName
 

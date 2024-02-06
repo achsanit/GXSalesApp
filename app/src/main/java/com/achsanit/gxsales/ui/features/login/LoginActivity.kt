@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.achsanit.gxsales.BuildConfig
 import com.achsanit.gxsales.R
-import com.achsanit.gxsales.data.response.LoginResponse
+import com.achsanit.gxsales.data.network.response.LoginResponse
 import com.achsanit.gxsales.databinding.ActivityLoginBinding
 import com.achsanit.gxsales.ui.features.main.MainActivity
 import com.achsanit.gxsales.utils.Resource
@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // function for collecting the state
     private fun setUpStateListener() {
         lifecycleScope.launch {
             repeatOnLifecycle(state = Lifecycle.State.CREATED) {
@@ -50,20 +51,26 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // function for get change in login state
     private fun loginStateListener(data: Resource<LoginResponse>) {
         with(binding) {
             when (data) {
                 is Resource.Loading -> {
-                    pbLogin.makeVisible()
+                    pbLogin.makeVisible() // when login state is loading, show the progress bar
                 }
 
                 is Resource.Success -> {
+                    // when login state is success,
+                    // hide the progress bar, save token and start intent
                     pbLogin.makeGone()
 
-                    if (!(data.data?.token.isNullOrEmpty())) {
-                        // TODO: save token to data store pref
+                    // check if there is a token save to data store preferences
+                    data.data?.token?.let {
+                        viewModel.saveTokenUser(it)
                     }
 
+                    // check if status is success, start intent to main activity
+                    // and kill current activity
                     if (data.data?.status.equals(Statics.SUCCESS)) {
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
@@ -72,8 +79,10 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 else -> {
+                    // else or when state is error, show the error snackbar
                     pbLogin.makeGone()
 
+                    // set message for snackbar
                     val message = when (data.codeError) {
                         401 -> resources.getString(R.string.message_check_email_password)
                         else -> resources.getString(
@@ -101,10 +110,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // function to login
     private fun userLogin() {
+        // check user is able to login or not
         if (viewModel.isAbleToLogin()) {
+            // when user able to login call SignIn UiEvent
             viewModel.dispatchEvent(LoginViewModel.UiEvent.SignIn)
         } else {
+            // when user cant login, show alert and error snackbar
             with(viewModel.data) {
                 showEmailAlert(!email.isValidEmail())
                 showPasswordAlert(password.isBlank())
@@ -126,6 +139,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // function setUp listener for all text field when changed
     private fun setupOnTextChangeListener() {
         with(binding) {
             edtEmail.doOnTextChanged { text, _, _, _ ->
@@ -139,6 +153,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // function to alert error on email text field
     private fun showEmailAlert(isNotValid: Boolean) {
         if (isNotValid) {
             binding.tilEmail.error = "Invalid Email"
@@ -150,6 +165,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // function to alert error on password text field
     private fun showPasswordAlert(isNotValid: Boolean) {
         if (isNotValid) {
             binding.tilPassword.error = "Input can not be empty"

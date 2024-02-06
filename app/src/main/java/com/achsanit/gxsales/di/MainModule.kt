@@ -2,7 +2,8 @@ package com.achsanit.gxsales.di
 
 import com.achsanit.gxsales.BuildConfig
 import com.achsanit.gxsales.data.MainRepository
-import com.achsanit.gxsales.data.service.GxService
+import com.achsanit.gxsales.data.local.DataStorePreference
+import com.achsanit.gxsales.data.network.service.GxService
 import com.achsanit.gxsales.ui.features.login.LoginViewModel
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
@@ -49,7 +50,9 @@ val mainModule = module {
         retrofit.create(GxService::class.java)
     }
 
-    single { MainRepository(get()) }
+    single { DataStorePreference(androidContext()) }
+
+    single { MainRepository(get(), get()) }
 
     viewModel { LoginViewModel(get()) }
 }

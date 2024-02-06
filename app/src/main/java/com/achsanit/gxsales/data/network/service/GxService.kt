@@ -1,6 +1,6 @@
-package com.achsanit.gxsales.data.service
+package com.achsanit.gxsales.data.network.service
 
-import com.achsanit.gxsales.data.response.LoginResponse
+import com.achsanit.gxsales.data.network.response.LoginResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 
