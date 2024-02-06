@@ -1,7 +1,8 @@
-package com.achsanit.gxsales
+package com.achsanit.gxsales.ui.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.achsanit.gxsales.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

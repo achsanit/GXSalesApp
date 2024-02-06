@@ -3,6 +3,14 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+/**
+ * VERSION INFORMATION
+ * version using semantic versioning -> x.y.z
+ */
+val versionMajor = 1 // change major ( design or flow) --> x
+val versionMinor = 0 // feature count --> y
+val versionPatch = 0 // bug fix/improve count --> z
+
 android {
     namespace = "com.achsanit.gxsales"
     compileSdk = 34
@@ -11,8 +19,8 @@ android {
         applicationId = "com.achsanit.gxsales"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -78,4 +86,7 @@ dependencies {
 
     val data_store_pref = "1.0.0" // local storage
     implementation("androidx.datastore:datastore-preferences:$data_store_pref")
+
+    val timber_logging = "5.0.1"
+    implementation("com.jakewharton.timber:timber:$timber_logging")
 }
