@@ -3,6 +3,7 @@ package com.achsanit.gxsales.application
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.achsanit.gxsales.di.KoinInitializer
+import com.achsanit.gxsales.utils.TimberInitializer
 
 class MyApplication: Application() {
 
@@ -11,6 +12,7 @@ class MyApplication: Application() {
 
         disableDarkTheme()
         KoinInitializer.init(this)
+        TimberInitializer.init()
     }
 
     private fun disableDarkTheme() {

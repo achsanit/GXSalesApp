@@ -7,4 +7,6 @@
     <string name="text_version_placeholder">GlobalXtreme \u00A9 2023 - V%s</string>
     <string name="message_invalid_input">Your input is invalid, please check again…</string>
     <string name="ok">Ok</string>
+    <string name="something_went_wrong_placeholder">Something went wrong [%s]</string>
+    <string name="message_check_email_password">Please check your email or password!!</string>
 </resources>

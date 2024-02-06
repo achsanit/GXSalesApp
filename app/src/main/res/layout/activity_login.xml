@@ -14,11 +14,11 @@
         android:layout_marginBottom="@dimen/size_40"
         android:contentDescription="@null"
         android:src="@drawable/gx_logo"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@id/tv_email_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tv_email_label"
@@ -50,7 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/text_hint_email_text_field"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/text_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,11 +110,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/medium_space"
-        tools:text="@string/text_version_placeholder"
-        android:textColor="@color/gray_300"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/gray_300"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck"
+        tools:text="@string/text_version_placeholder" />
+
+    <ProgressBar
+        android:id="@+id/pb_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/primary_yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
