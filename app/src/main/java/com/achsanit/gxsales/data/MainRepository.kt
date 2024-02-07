@@ -56,12 +56,13 @@ class MainRepository(
 
     // function logout
     suspend fun logout(): Resource<Boolean> {
-        val request = service.logout() // request to logout
+        // request to logout
+        val request = resourceMapper { service.logout().isSuccess() }
 
         // delete token and status login from local storage
         dataPref.setLogoutData()
         sharedPref.saveData(SharedPreferencesManager.TOKEN_KEY, "")
 
-        return resourceMapper { request.isSuccess() }
+        return request
     }
 }
