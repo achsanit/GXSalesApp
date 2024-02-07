@@ -7,8 +7,8 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.map
 
 class DataStorePreference(private val context: Context) {
@@ -19,10 +19,10 @@ class DataStorePreference(private val context: Context) {
         return preferences[IS_LOGIN_KEY] ?: false
     }
 
-    fun getToken(): Flow<String> {
+    suspend fun getToken(): String {
         return context.dataStore.data.map { pref ->
             pref[TOKEN_KEY] ?: ""
-        }
+        }.last()
     }
 
     suspend fun setLoginData(token: String) {

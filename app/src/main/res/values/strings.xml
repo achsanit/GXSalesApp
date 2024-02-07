@@ -9,4 +9,9 @@
     <string name="ok">Ok</string>
     <string name="something_went_wrong_placeholder">Something went wrong [%s]</string>
     <string name="message_check_email_password">Please check your email or password!!</string>
+    <string name="text_home">Home</string>
+    <string name="text_prospect">Prospect</string>
+    <string name="text_shop">Shop</string>
+    <string name="text_account">Account</string>
+    <string name="text_current_date_range_in_month">%s - %s</string>
 </resources>

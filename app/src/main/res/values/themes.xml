@@ -27,4 +27,54 @@
         <item name="cornerRadius">8dp</item>
         <!-- Add more custom attributes as needed -->
     </style>
+
+    <style name="ShapeAppearanceOverlayExtended" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100dp</item>
+    </style>
+
+    <style name="GxBottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:layout_marginTop">@dimen/size_4</item>
+        <item name="itemTextAppearanceInactive">@color/gray_500</item>
+        <item name="itemTextAppearanceActive">@color/black</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:textSize">@dimen/text_24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Title.medium">
+        <item name="android:textSize">@dimen/text_18</item>
+    </style>
+
+    <style name="Title.small">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="roundedImageView" parent="Theme.GXSales">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="roundedImageView.smallRounded" parent="roundedImageView">
+        <item name="cornerSize">@dimen/size_8</item>
+    </style>
+
+    <style name="roundedImageView.extraSmallRounded" parent="roundedImageView">
+        <item name="cornerSize">@dimen/size_4</item>
+    </style>
+
+    <style name="roundedImageView.mediumRounded" parent="roundedImageView">
+        <item name="cornerSize">@dimen/size_16</item>
+    </style>
+
+    <style name="roundedImageView.largeRounded" parent="roundedImageView">
+        <item name="cornerSize">@dimen/size_24</item>
+    </style>
+
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

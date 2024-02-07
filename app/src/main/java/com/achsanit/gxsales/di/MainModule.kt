@@ -3,8 +3,11 @@ package com.achsanit.gxsales.di
 import com.achsanit.gxsales.BuildConfig
 import com.achsanit.gxsales.data.MainRepository
 import com.achsanit.gxsales.data.local.DataStorePreference
+import com.achsanit.gxsales.data.local.SharedPreferencesManager
 import com.achsanit.gxsales.data.network.service.GxService
+import com.achsanit.gxsales.ui.features.dashboard.DashboardViewModel
 import com.achsanit.gxsales.ui.features.login.LoginViewModel
+import com.achsanit.gxsales.utils.CustomInterceptor
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
@@ -17,9 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val mainModule = module {
+    single { CustomInterceptor(get()) }
     single {
         val client = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(get<CustomInterceptor>())
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(1, TimeUnit.MINUTES)
 
@@ -51,8 +56,10 @@ val mainModule = module {
     }
 
     single { DataStorePreference(androidContext()) }
+    single { SharedPreferencesManager(androidContext()) }
 
-    single { MainRepository(get(), get()) }
+    single { MainRepository(get(), get(), get()) }
 
     viewModel { LoginViewModel(get()) }
+    viewModel { DashboardViewModel(get()) }
 }
