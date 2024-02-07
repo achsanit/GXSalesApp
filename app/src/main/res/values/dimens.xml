@@ -45,4 +45,5 @@
     <dimen name="size_60">60dp</dimen>
     <dimen name="text_32">32sp</dimen>
     <dimen name="size_5">5dp</dimen>
+    <dimen name="size_50">50dp</dimen>
 </resources>

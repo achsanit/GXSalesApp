@@ -4,13 +4,12 @@ import com.achsanit.gxsales.data.local.DataStorePreference
 import com.achsanit.gxsales.data.local.SharedPreferencesManager
 import com.achsanit.gxsales.data.local.entity.LeadDashboardEntity
 import com.achsanit.gxsales.data.local.entity.ProfileEntity
-import com.achsanit.gxsales.data.network.response.LeadsDashboardResponse
 import com.achsanit.gxsales.data.network.response.LoginResponse
 import com.achsanit.gxsales.data.network.service.GxService
 import com.achsanit.gxsales.utils.Resource
+import com.achsanit.gxsales.utils.mapper.isSuccess
 import com.achsanit.gxsales.utils.mapper.map
 import com.achsanit.gxsales.utils.resourceMapper
-import kotlinx.coroutines.flow.Flow
 
 class MainRepository(
     private val service: GxService,
@@ -36,11 +35,6 @@ class MainRepository(
         dataPref.setLoginData(token)
     }
 
-    // get token by local storage
-    fun getToken(): String {
-        return sharedPref.getString(SharedPreferencesManager.TOKEN_KEY)
-    }
-
     // get is login or not
     suspend fun isLogin(): Boolean {
         return dataPref.isLogin()
@@ -58,5 +52,16 @@ class MainRepository(
         return resourceMapper {
             service.getProfile().map()
         }
+    }
+
+    // function logout
+    suspend fun logout(): Resource<Boolean> {
+        val request = service.logout() // request to logout
+
+        // delete token and status login from local storage
+        dataPref.setLogoutData()
+        sharedPref.saveData(SharedPreferencesManager.TOKEN_KEY, "")
+
+        return resourceMapper { request.isSuccess() }
     }
 }

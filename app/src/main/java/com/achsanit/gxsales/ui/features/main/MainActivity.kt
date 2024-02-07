@@ -35,6 +35,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> {
                     setBottomNav(true) // show bottom nav
                 }
+                R.id.nav_account -> {
+                    setBottomNav(true)
+                }
+                R.id.nav_shop -> {
+                    setBottomNav(true)
+                }
+                R.id.nav_prospect -> {
+                    setBottomNav(true)
+                }
                 else -> {
                     setBottomNav(false) // hide bottom nav
                 }
