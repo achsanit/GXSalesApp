@@ -14,4 +14,12 @@
     <string name="text_shop">Shop</string>
     <string name="text_account">Account</string>
     <string name="text_current_date_range_in_month">%s - %s</string>
+    <string name="text_branch">Branch</string>
+    <string name="text_disivion">Division</string>
+    <string name="text_division">Division</string>
+    <string name="text_log_out">Log Out</string>
+    <string name="text_job_position">Job Position</string>
+    <string name="text_globalxtreme_bali">GlobalXtreme Bali</string>
+    <string name="text_sales">Sales</string>
+    <string name="text_senior_sales">Senior Sales</string>
 </resources>

@@ -10,7 +10,7 @@
         <item name="materialButtonStyle">@style/GxButtonStyle</item>
     </style>
 
-    <style name="Theme.GXSales" parent="Base.Theme.GXSales" />
+    <style name="Theme.GXSales" parent="Base.Theme.GXSales"/>
 
     <style name="GxInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/gray_300</item>
@@ -26,6 +26,11 @@
         <item name="backgroundTint">@color/primary_yellow</item>
         <item name="cornerRadius">8dp</item>
         <!-- Add more custom attributes as needed -->
+    </style>
+
+    <style name="GxButtonStyle.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/black</item>
+        <item name="cornerRadius">8dp</item>
     </style>
 
     <style name="ShapeAppearanceOverlayExtended" parent="">

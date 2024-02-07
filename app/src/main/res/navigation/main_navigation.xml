@@ -10,4 +10,9 @@
         android:name="com.achsanit.gxsales.ui.features.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
+    <dialog
+        android:id="@+id/nav_account"
+        android:name="com.achsanit.gxsales.ui.features.logout.LogoutFragment"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" />
 </navigation>
