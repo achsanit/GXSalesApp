@@ -4,6 +4,7 @@ import com.achsanit.gxsales.BuildConfig
 import com.achsanit.gxsales.data.MainRepository
 import com.achsanit.gxsales.data.local.DataStorePreference
 import com.achsanit.gxsales.data.network.service.GxService
+import com.achsanit.gxsales.ui.features.DashboardViewModel
 import com.achsanit.gxsales.ui.features.login.LoginViewModel
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
@@ -55,4 +56,5 @@ val mainModule = module {
     single { MainRepository(get(), get()) }
 
     viewModel { LoginViewModel(get()) }
+    viewModel { DashboardViewModel() }
 }

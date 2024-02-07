@@ -7,6 +7,8 @@
     <color name="gray_300">#D0D5DD</color>
     <color name="gray_500">#667085</color>
     <color name="primary_yellow">#F6CB17</color>
+    <color name="neutral_100">#26273B</color>
+
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#D0D5DD</color>
 </resources>

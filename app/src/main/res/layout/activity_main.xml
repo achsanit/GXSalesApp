@@ -6,13 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.features.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment
+        android:id="@+id/nav_host_main_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/main_navigation"
+        tools:ignore="FragmentTagUsage" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:elevation="0dp"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemPaddingBottom="@dimen/size_18"
+        app:itemPaddingTop="@dimen/size_18"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/bottom_nav_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/extra_large_margin"
+        android:backgroundTint="@color/black"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_add"
+        app:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_nav"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
