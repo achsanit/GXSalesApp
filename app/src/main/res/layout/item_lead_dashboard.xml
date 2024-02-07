@@ -40,6 +40,7 @@
                 style="@style/Title.medium"
                 android:textStyle="normal"
                 android:textColor="@color/neutral_100"
+                android:lines="2"
                 android:maxLines="2"
                 android:ellipsize="end"
                 app:layout_constraintEnd_toEndOf="parent"

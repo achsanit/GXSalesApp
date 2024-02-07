@@ -33,11 +33,11 @@ suspend inline fun <T> resourceMapper(
         }
     } catch (e: UnknownHostException) {
         e.printStackTrace()
-        Resource.Error(e.message.toString(), -1)
+        Resource.Error(e.message.toString(), CodeError.NO_INTERNET_CONNECTION)
     } catch (e: SocketTimeoutException) {
         e.printStackTrace()
-        Resource.Error(e.message.toString(), 0)
+        Resource.Error(e.message.toString(), CodeError.REQUEST_TIME_OUT)
     } catch (e: Exception) {
-        Resource.Error(e.message.toString(), 2)
+        Resource.Error(e.message.toString(), CodeError.SOMETHING_WENT_WRONG)
     }
 }

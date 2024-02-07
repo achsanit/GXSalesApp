@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.achsanit.gxsales.ui.features.DashboardFragment"
+        android:name="com.achsanit.gxsales.ui.features.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 </navigation>

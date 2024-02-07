@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.features.DashboardFragment">
+    tools:context=".ui.features.dashboard.DashboardFragment">
+
+    <ProgressBar
+        android:id="@+id/pb_profile_state"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:indeterminateTint="@color/primary_yellow"
+        android:layout_marginStart="@dimen/medium_space"
+        app:layout_constraintStart_toEndOf="@id/iv_user_image"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_user_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_user_image" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_user_image"
@@ -13,10 +24,10 @@
         android:layout_height="@dimen/size_44"
         android:layout_marginStart="@dimen/medium_space"
         android:layout_marginTop="@dimen/large_space"
+        android:src="@drawable/image_default_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        android:src="@drawable/image_default_avatar" />
+        app:shapeAppearanceOverlay="@style/circleImageView" />
 
     <TextView
         android:id="@+id/tv_user_name"
@@ -57,64 +68,92 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_user_email" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_range_date"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/medium_space"
-        android:layout_marginTop="@dimen/medium_space"
-        android:backgroundTint="@color/white"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/size_16"
-            android:paddingVertical="@dimen/size_8">
+            android:layout_height="match_parent"
+            android:paddingVertical="@dimen/medium_space">
 
-            <ImageView
-                android:id="@+id/iv_calendar_icon"
-                android:layout_width="@dimen/size_24"
-                android:layout_height="@dimen/size_24"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_calendar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_range_date"
-                style="@style/Title.medium"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_range_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_space"
-                android:textColor="@color/gray_500"
-                android:textStyle="normal"
+                android:layout_marginHorizontal="@dimen/medium_space"
+                android:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/size_16"
+                    android:paddingVertical="@dimen/size_8">
+
+                    <ImageView
+                        android:id="@+id/iv_calendar_icon"
+                        android:layout_width="@dimen/size_24"
+                        android:layout_height="@dimen/size_24"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_range_date"
+                        style="@style/Title.medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/small_space"
+                        android:textColor="@color/gray_500"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_calendar_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="01 Jan 2024 - 31 Jan 2024" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_leads_item"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/size_4"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/size_16"
+                android:paddingVertical="@dimen/size_12"
+                android:overScrollMode="never"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_calendar_icon"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="01 Jan 2024 - 31 Jan 2024" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_range_date"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_lead_dashboard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_leads_item"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/size_4"
-        android:paddingVertical="@dimen/size_12"
-        android:paddingHorizontal="@dimen/size_16"
-        android:clipToPadding="false"
+    <ProgressBar
+        android:id="@+id/pb_leads_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/primary_yellow"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_range_date"
-        tools:itemCount="4"
-        tools:listitem="@layout/item_lead_dashboard" />
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
