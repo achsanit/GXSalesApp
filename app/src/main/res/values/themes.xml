@@ -10,6 +10,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="textInputStyle">@style/GxInputLayoutStyle</item>
         <item name="materialButtonStyle">@style/GxButtonStyle</item>
+        <item name="android:radioButtonStyle">@style/GxRadioButtonStyle</item>
     </style>
 
     <style name="Theme.GXSales" parent="Base.Theme.GXSales"/>
@@ -21,6 +22,21 @@
         <item name="boxCornerRadiusBottomEnd">8dp</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
+    </style>
+
+    <style name="GxInputLayoutStyle.Dropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/gray_300</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="endIconTint">@color/gray_500</item>
+    </style>
+
+    <style name="GxInputLayoutStyle.Dropdown.filled">
+        <item name="boxBackgroundColor">@color/primary_yellow</item>
+
     </style>
 
     <style name="GxButtonStyle" parent="Widget.MaterialComponents.Button">
@@ -83,5 +99,11 @@
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="GxRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton" >
+        <item name="android:paddingHorizontal">@dimen/size_8</item>
+        <item name="android:button">@drawable/selector_radio_button</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>

@@ -20,4 +20,18 @@
         android:name="com.achsanit.gxsales.ui.features.lead.show.LeadsFragment"
         android:label="fragment_leads"
         tools:layout="@layout/fragment_leads" />
+    <fragment
+        android:id="@+id/createUpdateLeadFragment"
+        android:name="com.achsanit.gxsales.ui.features.lead.add.AddLeadFirstFragment"
+        android:label="fragment_create_update_lead"
+        tools:layout="@layout/fragment_first_add_lead" >
+        <action
+            android:id="@+id/action_createUpdateLeadFragment_to_addLeadSecondFragment"
+            app:destination="@id/addLeadSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLeadSecondFragment"
+        android:name="com.achsanit.gxsales.ui.features.lead.add.AddLeadSecondFragment"
+        android:label="fragment_second_add_led"
+        tools:layout="@layout/fragment_second_add_lead" />
 </navigation>
