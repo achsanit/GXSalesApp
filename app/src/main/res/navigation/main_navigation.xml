@@ -15,4 +15,9 @@
         android:name="com.achsanit.gxsales.ui.features.logout.LogoutFragment"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_prospect"
+        android:name="com.achsanit.gxsales.ui.features.lead.show.LeadsFragment"
+        android:label="fragment_leads"
+        tools:layout="@layout/fragment_leads" />
 </navigation>

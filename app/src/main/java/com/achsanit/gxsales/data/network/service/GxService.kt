@@ -1,5 +1,6 @@
 package com.achsanit.gxsales.data.network.service
 
+import com.achsanit.gxsales.data.network.response.LeadsResponse
 import com.achsanit.gxsales.data.network.response.GetProfileResponse
 import com.achsanit.gxsales.data.network.response.LeadsDashboardResponse
 import com.achsanit.gxsales.data.network.response.LoginResponse
@@ -23,4 +24,7 @@ interface GxService {
 
     @POST("logout")
     suspend fun logout(): MetaResponse
+
+    @GET("leads")
+    suspend fun getLeads(): LeadsResponse
 }

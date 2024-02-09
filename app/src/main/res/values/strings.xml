@@ -22,4 +22,6 @@
     <string name="text_globalxtreme_bali">GlobalXtreme Bali</string>
     <string name="text_sales">Sales</string>
     <string name="text_senior_sales">Senior Sales</string>
+    <string name="text_filter">Filter</string>
+    <string name="text_leads">Leads</string>
 </resources>

@@ -6,6 +6,7 @@ import com.achsanit.gxsales.data.local.DataStorePreference
 import com.achsanit.gxsales.data.local.SharedPreferencesManager
 import com.achsanit.gxsales.data.network.service.GxService
 import com.achsanit.gxsales.ui.features.dashboard.DashboardViewModel
+import com.achsanit.gxsales.ui.features.lead.show.LeadsViewModel
 import com.achsanit.gxsales.ui.features.login.LoginViewModel
 import com.achsanit.gxsales.ui.features.logout.LogoutViewModel
 import com.achsanit.gxsales.utils.CustomInterceptor
@@ -64,4 +65,5 @@ val mainModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { DashboardViewModel(get()) }
     viewModel { LogoutViewModel(get()) }
+    viewModel { LeadsViewModel(get()) }
 }
