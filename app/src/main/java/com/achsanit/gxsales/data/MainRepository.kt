@@ -3,6 +3,7 @@ package com.achsanit.gxsales.data
 import com.achsanit.gxsales.data.local.DataStorePreference
 import com.achsanit.gxsales.data.local.SharedPreferencesManager
 import com.achsanit.gxsales.data.local.entity.LeadDashboardEntity
+import com.achsanit.gxsales.data.local.entity.LeadItemEntity
 import com.achsanit.gxsales.data.local.entity.ProfileEntity
 import com.achsanit.gxsales.data.network.response.LoginResponse
 import com.achsanit.gxsales.data.network.service.GxService
@@ -64,5 +65,12 @@ class MainRepository(
         sharedPref.saveData(SharedPreferencesManager.TOKEN_KEY, "")
 
         return request
+    }
+
+    // function get list of lead
+    suspend fun getLeads(): Resource<List<LeadItemEntity>> {
+        return resourceMapper {
+            service.getLeads().map()
+        }
     }
 }

@@ -25,4 +25,17 @@ object DateHelper {
         return dateFormat.format(lastDayInMonth)
     }
 
+    fun convertDateFormat(inputDate: String): String {
+        val inputFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+
+        val date = inputFormat.parse(inputDate)
+
+        return try {
+            outputFormat.format(date)
+        } catch (e: Exception) {
+            "Error Parsing"
+        }
+    }
+
 }

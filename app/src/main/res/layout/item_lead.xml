@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingHorizontal="@dimen/medium_space">
+
+    <TextView
+        android:id="@+id/tv_full_name"
+        style="@style/Title.medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="I Ketut Yuli Adi Saputra" />
+
+    <TextView
+        android:id="@+id/tv_lead_number"
+        style="@style/Title.medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_6"
+        android:textColor="@color/primary_yellow"
+        android:textSize="@dimen/text_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_full_name"
+        tools:ignore="TextContrastCheck"
+        tools:text="#LD0124101715" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_lead_number"
+        tools:text="Jl. Tukad balian Gg. Nuri III No.9, Renon, Denpasar Selatan, Kota Denpasar, Bali 80227, Indonesia" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_12"
+        app:cardCornerRadius="@dimen/size_4"
+        app:cardBackgroundColor="@color/primary_yellow"
+        app:strokeWidth="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_address">
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/size_12"
+            android:paddingVertical="@dimen/size_2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12"
+            tools:ignore="TextContrastCheck"
+            tools:text="Schedule" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_probability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_8"
+        android:layout_marginTop="@dimen/size_12"
+        app:cardCornerRadius="@dimen/size_4"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@color/primary_yellow"
+        app:layout_constraintStart_toEndOf="@id/cv_status"
+        app:layout_constraintTop_toBottomOf="@id/tv_address">
+
+        <TextView
+            android:id="@+id/tv_probability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/size_12"
+            android:paddingVertical="@dimen/size_2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12"
+            tools:ignore="TextContrastCheck"
+            tools:text="Schedule" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:id="@+id/v_left_add_date"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/size_8"
+        android:background="@color/gray_500"
+        app:layout_constraintTop_toTopOf="@id/cv_probability"
+        app:layout_constraintBottom_toBottomOf="@id/cv_probability"
+        app:layout_constraintStart_toEndOf="@id/cv_probability" />
+
+    <TextView
+        android:id="@+id/tv_add_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_8"
+        android:textSize="@dimen/text_12"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_probability"
+        app:layout_constraintStart_toEndOf="@+id/v_left_add_date"
+        app:layout_constraintTop_toTopOf="@+id/cv_probability"
+        tools:text="02 January 2024"/>
+
+    <View
+        android:id="@+id/v_left_branch"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/size_8"
+        android:background="@color/gray_500"
+        app:layout_constraintTop_toTopOf="@id/cv_probability"
+        app:layout_constraintBottom_toBottomOf="@id/cv_probability"
+        app:layout_constraintStart_toEndOf="@id/tv_add_date" />
+
+    <TextView
+        android:id="@+id/tv_branch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_8"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/text_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/v_left_branch"
+        app:layout_constraintTop_toTopOf="@+id/cv_probability"
+        tools:text="GlobalXtreme Bali" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/size_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/dashed_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_branch" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
