@@ -67,4 +67,7 @@
     <string name="text_lead_probability_required">Lead Probability<font fgcolor="red">*</font></string>
     <string name="text_select_probability_media">- Select Lead Probability -</string>
     <string name="text_notes">Notes</string>
+    <string name="text_session_ended">Session Ended!!</string>
+    <string name="text_message_session_ends">Your sesion has been ended, please login again..</string>
+    <string name="text_okay">Okay</string>
 </resources>
