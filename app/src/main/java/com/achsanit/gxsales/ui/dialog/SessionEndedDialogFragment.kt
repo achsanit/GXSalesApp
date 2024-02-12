@@ -36,11 +36,11 @@ class SessionEndedDialogFragment(
 
         with(binding) {
             btnOkay.setOnClickListener {
-                dismiss()
                 lifecycleScope.launch {
                     dataPref.setLogoutData()
                     sharedPref.saveData(SharedPreferencesManager.TOKEN_KEY, "")
                 }
+                dismiss()
                 navigation.invoke()
             }
         }

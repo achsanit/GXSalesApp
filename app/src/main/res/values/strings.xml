@@ -70,4 +70,19 @@
     <string name="text_session_ended">Session Ended!!</string>
     <string name="text_message_session_ends">Your sesion has been ended, please login again..</string>
     <string name="text_okay">Okay</string>
+    <string name="message_take_a_picture_from">Take a picture from</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="text_file_size_in_kb_placeholder">%s KB</string>
+    <string name="message_rationale_all_permission">This application cannot work without Location, Storage, and Camera Permission.</string>
+    <string name="text_identity_or_passport">Identity / Passport</string>
+    <string name="text_back">Back</string>
+    <string name="text_reset">Reset</string>
+    <string name="error_message_lead_settings_placeholder">error get list of %s</string>
+    <string name="text_success">Success</string>
+    <string name="text_message_success">Your process is success</string>
+    <string name="text_done">Done</string>
+    <string name="text_title_discard_change">Discard Change?</string>
+    <string name="text_message_discard_change">Are you sure to discard this change?</string>
+    <string name="text_cancel">Cancel</string>
 </resources>

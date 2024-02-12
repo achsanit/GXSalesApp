@@ -33,7 +33,7 @@ class DashboardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -59,12 +59,12 @@ class DashboardFragment : Fragment() {
 
     private fun setUpStateListener() {
         lifecycleScope.launch {
-            repeatOnLifecycle(state = Lifecycle.State.CREATED) {
+            repeatOnLifecycle(state = Lifecycle.State.RESUMED) {
                 viewModel.leadsDashboardState.collect(::leadsStateCollector)
             }
         }
         lifecycleScope.launch {
-            repeatOnLifecycle(state = Lifecycle.State.CREATED) {
+            repeatOnLifecycle(state = Lifecycle.State.RESUMED) {
                 viewModel.profileState.collect(::profileStateCollector)
             }
         }
@@ -107,4 +107,13 @@ class DashboardFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getLeads()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

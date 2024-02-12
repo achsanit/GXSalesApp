@@ -20,7 +20,6 @@ class DashboardViewModel(private val mainRepo: MainRepository) : ViewModel() {
     val profileState = _profileState.asStateFlow()
 
     init {
-        getLeads()
         getProfile()
     }
 
@@ -30,7 +29,7 @@ class DashboardViewModel(private val mainRepo: MainRepository) : ViewModel() {
         }
     }
 
-    private fun getLeads() {
+    fun getLeads() {
         viewModelScope.launch {
             _leadsDashboardState.emit(mainRepo.getLeadsDashboard())
         }

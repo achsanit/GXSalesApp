@@ -14,11 +14,7 @@ class LeadsViewModel(private val mainRepo: MainRepository) : ViewModel() {
     private val _leadsState = MutableStateFlow<Resource<List<LeadItemEntity>>>(Resource.Loading())
     val leadsState = _leadsState.asStateFlow()
 
-    init {
-        getLeads()
-    }
-
-    private fun getLeads() {
+    fun getLeads() {
         viewModelScope.launch {
             _leadsState.emit(mainRepo.getLeads())
         }

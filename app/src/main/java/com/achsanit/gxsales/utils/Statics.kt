@@ -11,3 +11,14 @@ object Statics {
 
 
 }
+
+// this sealed interface for get setting lead data
+sealed interface LeadSettings {
+    data object Type: LeadSettings
+    data object Channel: LeadSettings
+    data object Media: LeadSettings
+    data object Source: LeadSettings
+    data object Status: LeadSettings
+    data object Probability: LeadSettings
+    data object BranchOffice: LeadSettings
+}

@@ -67,5 +67,5 @@ val mainModule = module {
     viewModel { DashboardViewModel(get()) }
     viewModel { LogoutViewModel(get()) }
     viewModel { LeadsViewModel(get()) }
-    viewModel { AddLeadViewModel() }
+    viewModel { AddLeadViewModel(get()) }
 }

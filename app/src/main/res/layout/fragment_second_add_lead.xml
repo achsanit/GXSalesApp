@@ -7,6 +7,17 @@
     android:background="@color/white"
     tools:context=".ui.features.lead.add.AddLeadSecondFragment">
 
+    <ProgressBar
+        android:id="@+id/pb_create_lead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/primary_yellow"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
@@ -79,8 +90,8 @@
         android:id="@+id/sv_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="@dimen/medium_space"
         android:clipToPadding="false"
+        android:padding="@dimen/medium_space"
         android:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@id/cl_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,9 +125,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_lead_type"
+                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_marginTop="@dimen/size_6"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -148,9 +159,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_lead_channel"
+                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_marginTop="@dimen/size_6"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -182,9 +193,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_lead_media"
+                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_marginTop="@dimen/size_6"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -216,9 +227,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_lead_source"
+                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_marginTop="@dimen/size_6"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -250,9 +261,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_lead_status"
+                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_marginTop="@dimen/size_6"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -284,9 +295,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_lead_probability"
+                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/GxInputLayoutStyle.Dropdown"
                 android:layout_marginTop="@dimen/size_6"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -345,9 +356,9 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/cl_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cl_button" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_button"
@@ -369,9 +380,9 @@
             android:textAllCaps="false"
             android:textSize="@dimen/text_14"
             app:elevation="0dp"
-            app:layout_constraintStart_toEndOf="@id/btn_previous"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_previous"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
