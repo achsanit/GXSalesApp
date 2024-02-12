@@ -140,4 +140,11 @@ class MainRepository(
             service.createLead(requestBody.build()).status.equals(Statics.SUCCESS)
         }
     }
+
+    // function to delete lead by id
+    suspend fun deleteLead(id: Int): Resource<Boolean> {
+        return resourceMapper {
+            service.deleteLead(id).status.equals(Statics.SUCCESS)
+        }
+    }
 }

@@ -85,4 +85,7 @@
     <string name="text_title_discard_change">Discard Change?</string>
     <string name="text_message_discard_change">Are you sure to discard this change?</string>
     <string name="text_cancel">Cancel</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_edit_delete_message_dialog">Do you want to edit or delete this item?</string>
 </resources>
