@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.achsanit.gxsales.data.local.entity.LeadItemEntity
 import com.achsanit.gxsales.databinding.FragmentLeadsBinding
 import com.achsanit.gxsales.ui.adapter.LeadsAdapter
+import com.achsanit.gxsales.ui.dialog.SettingLeadDialogFragment
 import com.achsanit.gxsales.utils.Resource
 import com.achsanit.gxsales.utils.makeGone
 import com.achsanit.gxsales.utils.makeVisible
@@ -25,11 +27,7 @@ class LeadsFragment : Fragment() {
     private var _binding: FragmentLeadsBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModel<LeadsViewModel>()
-    private val leadsAdapter by lazy {
-        LeadsAdapter{
-            //TODO: nav controller to update fragment
-        }
-    }
+    private val leadsAdapter by lazy { LeadsAdapter(::showSettingDialog) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +59,30 @@ class LeadsFragment : Fragment() {
                 viewModel.leadsState.collect(::leadsStateCollector)
             }
         }
+        lifecycleScope.launch {
+            repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                viewModel.deleteState.collect(::deleteStateCollector)
+            }
+        }
+    }
+
+    private fun deleteStateCollector(data: Resource<Boolean>) {
+        with(binding) {
+            data.collect(
+                onLoading = {
+                    pbLeadsState.makeVisible()
+                },
+                onSuccess = {
+                    pbLeadsState.makeGone()
+                    Toast.makeText(requireContext(), "Delete Success", Toast.LENGTH_SHORT).show()
+                    viewModel.getLeads()
+                },
+                onError = { s: String?, i: Int ->
+                    pbLeadsState.makeGone()
+                    onNetworkEvent(i, s)
+                }
+            )
+        }
     }
 
     private fun leadsStateCollector(data: Resource<List<LeadItemEntity>>) {
@@ -79,6 +101,18 @@ class LeadsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun showSettingDialog(data: LeadItemEntity) {
+        SettingLeadDialogFragment(
+            messageTitle = data.fullName,
+            onFirstOptionClick = {
+                Toast.makeText(requireContext(), "edit", Toast.LENGTH_SHORT).show()
+            },
+            onSecondOptionClick = {
+                viewModel.deleteLead(data.id)
+            }
+        ).show(childFragmentManager, SettingLeadDialogFragment.TAG)
     }
 
     override fun onResume() {

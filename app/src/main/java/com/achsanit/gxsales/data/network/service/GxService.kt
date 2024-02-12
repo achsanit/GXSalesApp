@@ -8,8 +8,10 @@ import com.achsanit.gxsales.data.network.response.MetaResponse
 import com.achsanit.gxsales.data.network.response.SettingsResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface GxService {
 
@@ -54,5 +56,10 @@ interface GxService {
     @POST("leads")
     suspend fun createLead(
         @Body body: RequestBody
+    ): MetaResponse
+
+    @DELETE("leads/{leadId}")
+    suspend fun deleteLead(
+        @Path("leadId") id: Int
     ): MetaResponse
 }
