@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/medium_space"
+    tools:context=".ui.dialog.DiscardConfirmDialogFragment">
+
+    <ImageView
+        android:id="@+id/iv_icon_warning"
+        android:layout_width="@dimen/size_60"
+        android:layout_height="@dimen/size_60"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_warning_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:text="@string/text_title_discard_change"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_icon_warning" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_4"
+        android:text="@string/text_message_discard_change"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/GxButtonStyle.Outlined"
+        android:layout_marginEnd="@dimen/extra_small_space"
+        android:layout_marginTop="@dimen/large_space"
+        android:paddingVertical="@dimen/small_space"
+        android:text="@string/text_cancel"
+        app:layout_constraintEnd_toStartOf="@id/btn_okay"
+        app:layout_constraintTop_toBottomOf="@id/tv_message"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_okay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/extra_small_space"
+        android:layout_marginTop="@dimen/large_space"
+        android:paddingVertical="@dimen/small_space"
+        android:text="@string/text_okay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_message"
+        app:layout_constraintStart_toEndOf="@id/btn_cancel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

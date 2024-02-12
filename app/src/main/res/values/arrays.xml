@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_prefix_phone">
+        <item>+62</item>
+        <item>+60</item>
+        <item>+82</item>
+        <item>+65</item>
+        <item>+84</item>
+        <item>+95</item>
+        <item>+63</item>
+    </string-array>
+</resources>

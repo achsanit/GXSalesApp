@@ -136,7 +136,7 @@
         android:textSize="@dimen/text_12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/v_left_branch"
-        app:layout_constraintTop_toTopOf="@+id/cv_probability"
+        app:layout_constraintTop_toTopOf="@+id/tv_add_date"
         tools:text="GlobalXtreme Bali" />
 
     <View

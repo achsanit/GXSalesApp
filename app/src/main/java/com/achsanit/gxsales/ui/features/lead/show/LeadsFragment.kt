@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.achsanit.gxsales.data.local.entity.LeadItemEntity
 import com.achsanit.gxsales.databinding.FragmentLeadsBinding
@@ -48,6 +49,9 @@ class LeadsFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = leadsAdapter
             }
+            ibBackToolbar.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 
@@ -75,6 +79,11 @@ class LeadsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getLeads()
     }
 
     override fun onDestroyView() {

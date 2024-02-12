@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.dialog.PickImageDialogFragment">
+
+    <TextView
+        android:id="@+id/tv_take_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24"
+        android:text="@string/message_take_a_picture_from"
+        style="@style/Title.medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/v_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/size_24"
+        app:layout_constraintTop_toBottomOf="@id/tv_take_picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/primary_yellow_active"
+        app:cardCornerRadius="@dimen/size_14"
+        app:layout_constraintEnd_toStartOf="@id/cv_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_divider"
+        app:strokeColor="@color/primary_yellow"
+        app:strokeWidth="1dp"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <ImageView
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_80"
+            android:contentDescription="@null"
+            android:padding="@dimen/size_24"
+            android:src="@drawable/ic_camera_fill"
+            app:tint="@color/primary_yellow"
+            tools:ignore="ImageContrastCheck" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_6"
+        android:layout_marginBottom="@dimen/size_24"
+        android:text="@string/title_camera"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/cv_camera"
+        app:layout_constraintStart_toStartOf="@id/cv_camera"
+        app:layout_constraintTop_toBottomOf="@id/cv_camera" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/primary_yellow_active"
+        app:cardCornerRadius="@dimen/size_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cv_camera"
+        app:layout_constraintTop_toBottomOf="@id/v_divider"
+        app:strokeColor="@color/primary_yellow"
+        app:strokeWidth="1dp"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <ImageView
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_80"
+            android:contentDescription="@null"
+            android:padding="@dimen/size_24"
+            android:src="@drawable/ic_gallery"
+            app:tint="@color/primary_yellow"
+            tools:ignore="ImageContrastCheck" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_24"
+        android:layout_marginTop="@dimen/size_6"
+        android:gravity="center"
+        android:text="@string/title_gallery"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cv_gallery"
+        app:layout_constraintStart_toStartOf="@+id/cv_gallery"
+        app:layout_constraintTop_toBottomOf="@+id/cv_gallery" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
