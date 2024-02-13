@@ -1,3 +1,97 @@
 <resources>
     <string name="app_name">GX Sales</string>
+    <string name="text_email">Email</string>
+    <string name="text_hint_email_text_field">e.g john@example.com</string>
+    <string name="text_password">Password</string>
+    <string name="text_sign_in">Sign In</string>
+    <string name="text_version_placeholder">GlobalXtreme \u00A9 2023 - V%s</string>
+    <string name="message_invalid_input">Your input is invalid, please check again…</string>
+    <string name="ok">OK</string>
+    <string name="something_went_wrong_placeholder">Something went wrong [%s]</string>
+    <string name="message_check_email_password">Please check your email or password!!</string>
+    <string name="text_home">Home</string>
+    <string name="text_prospect">Prospect</string>
+    <string name="text_shop">Shop</string>
+    <string name="text_account">Account</string>
+    <string name="text_current_date_range_in_month">%s - %s</string>
+    <string name="text_branch">Branch</string>
+    <string name="text_disivion">Division</string>
+    <string name="text_division">Division</string>
+    <string name="text_log_out">Log Out</string>
+    <string name="text_job_position">Job Position</string>
+    <string name="text_globalxtreme_bali">GlobalXtreme Bali</string>
+    <string name="text_sales">Sales</string>
+    <string name="text_senior_sales">Senior Sales</string>
+    <string name="text_filter">Filter</string>
+    <string name="text_leads">Leads</string>
+    <string name="text_add_lead">Add Lead</string>
+    <string name="text_next">Next</string>
+    <string name="text_select_branch_office">Select Branch Office</string>
+    <string name="text_branch_office">Branch Office</string>
+    <string name="text_personal_data">Personal Data</string>
+    <string name="text_full_name_required">Full Name <font fgcolor="red">*</font></string>
+    <string name="text_email_required">Email <font fgcolor="red">*</font></string>
+    <string name="text_select_branch_hint">- Select Branch Office -</string>
+    <string name="text_cell_phone_required">Cell Phone Number <font fgcolor="red">*</font></string>
+    <string name="text_select_location">Select Location</string>
+    <string name="text_address">Address</string>
+    <string name="text_latitude_required">Latitude <font fgcolor="red">*</font></string>
+    <string name="text_longitude_required">Longitude <font fgcolor="red">*</font></string>
+    <string name="text_male">Male</string>
+    <string name="text_female">Female</string>
+    <string name="text_add_a_photo">Add a photo</string>
+    <string name="text_upload_image_identity">Upload Identity / Passport</string>
+    <string name="text_identity_number">Identity Number</string>
+    <string name="text_hint_full_name">e.g John Doe</string>
+    <string name="text_hint_phone_number">897993xxxx</string>
+    <string name="text_hint_address">e.g Jl Kerobokan 388x</string>
+    <string name="text_hint_latitude">e.g -8.44444</string>
+    <string name="text_hint_longitude">e.g 115.00003</string>
+    <string name="text_choose_gender">Choose Gender?</string>
+    <string name="text_hint_identity_number">e.g 1879920xxxxxx</string>
+    <string name="text_prefix_indo_phone">+62</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_previous">Previous</string>
+    <string name="text_submit">Submit</string>
+    <string name="text_lead_information">Lead Information</string>
+    <string name="text_lead_type_required">Lead Type<font fgcolor="red">*</font></string>
+    <string name="text_lead_channel_required">Lead Channel<font fgcolor="red">*</font></string>
+    <string name="text_select_lead_type">- Select Lead Type -</string>
+    <string name="text_select_lead_channel">- Select Lead Channel -</string>
+    <string name="text_lead_media_required">Lead Media<font fgcolor="red">*</font></string>
+    <string name="text_select_lead_media">- Select Lead Media -</string>
+    <string name="text_lead_source_required">Lead Source<font fgcolor="red">*</font></string>
+    <string name="text_select_lead_source">- Select Lead Source -</string>
+    <string name="text_lead_status_required">Lead Status<font fgcolor="red">*</font></string>
+    <string name="text_select_lead_status">- Select Lead Status -</string>
+    <string name="text_lead_probability_required">Lead Probability<font fgcolor="red">*</font></string>
+    <string name="text_select_probability_media">- Select Lead Probability -</string>
+    <string name="text_notes">Notes</string>
+    <string name="text_session_ended">Session Ended!!</string>
+    <string name="text_message_session_ends">Your sesion has been ended, please login again..</string>
+    <string name="text_okay">Okay</string>
+    <string name="message_take_a_picture_from">Take a picture from</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="text_file_size_in_kb_placeholder">%s KB</string>
+    <string name="message_rationale_all_permission">This application cannot work without Location, Storage, and Camera Permission.</string>
+    <string name="text_identity_or_passport">Identity / Passport</string>
+    <string name="text_back">Back</string>
+    <string name="text_reset">Reset</string>
+    <string name="error_message_lead_settings_placeholder">error get list of %s</string>
+    <string name="text_success">Success</string>
+    <string name="text_message_success">Your process is success</string>
+    <string name="text_done">Done</string>
+    <string name="text_title_discard_change">Discard Change?</string>
+    <string name="text_message_discard_change">Are you sure to discard this change?</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_edit_delete_message_dialog">Do you want to edit or delete this item?</string>
+    <string name="text_shop_item">Shop Item</string>
+    <string name="text_price_placeholder">Rp %s / pcs</string>
+    <string name="text_stock_placeholder">Stock : %s Pcs</string>
+    <string name="text_type_placeholder">Type : %s</string>
+    <string name="text_tax_placeholder">w/Tax: Rp %s (%s)</string>
+    <string name="tex_search">Search...</string>
 </resources>

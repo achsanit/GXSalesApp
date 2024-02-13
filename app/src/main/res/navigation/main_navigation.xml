@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.achsanit.gxsales.ui.features.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <dialog
+        android:id="@+id/nav_account"
+        android:name="com.achsanit.gxsales.ui.features.logout.LogoutFragment"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_prospect"
+        android:name="com.achsanit.gxsales.ui.features.lead.show.LeadsFragment"
+        android:label="fragment_leads"
+        tools:layout="@layout/fragment_leads" >
+        <action
+            android:id="@+id/action_nav_prospect_to_createUpdateLeadFragment"
+            app:destination="@id/createUpdateLeadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createUpdateLeadFragment"
+        android:name="com.achsanit.gxsales.ui.features.lead.add.AddLeadFirstFragment"
+        android:label="fragment_create_update_lead"
+        tools:layout="@layout/fragment_first_add_lead" >
+        <action
+            android:id="@+id/action_createUpdateLeadFragment_to_addLeadSecondFragment"
+            app:destination="@id/addLeadSecondFragment" />
+        <action
+            android:id="@+id/action_createUpdateLeadFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment" />
+        <action
+            android:id="@+id/action_createUpdateLeadFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <argument
+            android:name="idLead"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLeadSecondFragment"
+        android:name="com.achsanit.gxsales.ui.features.lead.add.AddLeadSecondFragment"
+        android:label="fragment_second_add_led"
+        tools:layout="@layout/fragment_second_add_lead" >
+        <argument
+            android:name="idLead"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="com.achsanit.gxsales.ui.features.lead.add.imageviewer.ImageViewerFragment"
+        android:label="fragment_image_viewer"
+        tools:layout="@layout/fragment_image_viewer" >
+        <argument
+            android:name="imageUri"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.achsanit.gxsales.ui.features.lead.add.maps.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/nav_shop"
+        android:name="com.achsanit.gxsales.ui.features.shop.ShopFragment"
+        android:label="ShopFragment" />
+</navigation>

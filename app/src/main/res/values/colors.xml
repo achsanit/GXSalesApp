@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#B92D2D</color>
+
+    <color name="gray_300">#D0D5DD</color>
+    <color name="gray_100">#EBEDF1</color>
+    <color name="gray_500">#667085</color>
+    <color name="primary_yellow">#F6CB17</color>
+    <color name="primary_yellow_active">#FAF0D4</color>
+    <color name="primary_green">#2DB986</color>
+    <color name="primary_orange">#ffad4d</color>
+    <color name="primary_navy">#145CA0</color>
+    <color name="neutral_blue">#0085FF</color>
+    <color name="neutral_100">#26273B</color>
+    <color name="semantic_red">#DE5263</color>
+
+
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#D0D5DD</color>
 </resources>

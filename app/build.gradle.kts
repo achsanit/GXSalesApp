@@ -1,7 +1,17 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
+
+/**
+ * VERSION INFORMATION
+ * version using semantic versioning -> x.y.z
+ */
+val versionMajor = 1 // change major ( design or flow) --> x
+val versionMinor = 0 // feature count --> y
+val versionPatch = 0 // bug fix/improve count --> z
 
 android {
     namespace = "com.achsanit.gxsales"
@@ -11,8 +21,8 @@ android {
         applicationId = "com.achsanit.gxsales"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -47,10 +57,17 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("com.vmadalin:easypermissions-ktx:1.0.0")
+
+    val google_maps_version ="18.1.0"
+    implementation("com.google.android.gms:play-services-maps:$google_maps_version")
+    implementation("com.google.android.gms:play-services-location:21.1.0")
 
     val nav_version = "2.7.6" // navigation component
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -78,4 +95,7 @@ dependencies {
 
     val data_store_pref = "1.0.0" // local storage
     implementation("androidx.datastore:datastore-preferences:$data_store_pref")
+
+    val timber_logging = "5.0.1"
+    implementation("com.jakewharton.timber:timber:$timber_logging")
 }
