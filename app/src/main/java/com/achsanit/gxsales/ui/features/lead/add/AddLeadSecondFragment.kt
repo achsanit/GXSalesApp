@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.achsanit.gxsales.R
 import com.achsanit.gxsales.ui.features.lead.add.AddLeadViewModel.UIEvent.*
 import com.achsanit.gxsales.databinding.FragmentSecondAddLeadBinding
@@ -31,6 +32,7 @@ class AddLeadSecondFragment : Fragment() {
     private var _binding: FragmentSecondAddLeadBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AddLeadViewModel by activityViewModel()
+    private val navArgs: AddLeadSecondFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +59,7 @@ class AddLeadSecondFragment : Fragment() {
                 findNavController().popBackStack()
             }
             btnSubmit.setOnClickListener {
-                viewModel.dispatch(OnCreateLead)
+                viewModel.dispatch(OnCreateLead(navArgs.idLead))
             }
         }
     }

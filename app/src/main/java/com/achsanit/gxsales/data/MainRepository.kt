@@ -3,6 +3,7 @@ package com.achsanit.gxsales.data
 import com.achsanit.gxsales.data.local.DataStorePreference
 import com.achsanit.gxsales.data.local.SharedPreferencesManager
 import com.achsanit.gxsales.data.local.entity.CreateLeadData
+import com.achsanit.gxsales.data.local.entity.DetailLeadEntity
 import com.achsanit.gxsales.data.local.entity.LeadDashboardEntity
 import com.achsanit.gxsales.data.local.entity.LeadItemEntity
 import com.achsanit.gxsales.data.local.entity.ProfileEntity
@@ -145,6 +146,53 @@ class MainRepository(
     suspend fun deleteLead(id: Int): Resource<Boolean> {
         return resourceMapper {
             service.deleteLead(id).status.equals(Statics.SUCCESS)
+        }
+    }
+
+    // get detail lead by id
+    suspend fun getDetailLead(id: Int): Resource<DetailLeadEntity> {
+        return resourceMapper {
+            service.getDetailLead(id).map()
+        }
+    }
+
+    // update lead by id
+    suspend fun updateLead(id: Int, data: CreateLeadData): Resource<Boolean> {
+        val phone = if (data.prefixPhone.isNotEmpty() && data.phone.first().toString() == "0") {
+            data.phone.drop(1)
+        } else { data.phone }
+        val requestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("branchOfficeId", data.branchOfficeId.toString())
+            .addFormDataPart("probabilityId", data.probabilityId.toString())
+            .addFormDataPart("typeId", data.typeId.toString())
+            .addFormDataPart("channelId", data.channelId.toString())
+            .addFormDataPart("mediaId", data.mediaId.toString())
+            .addFormDataPart("sourceId", data.sourceId.toString())
+            .addFormDataPart("statusId", data.statusId.toString())
+            .addFormDataPart("fullName", data.fullName)
+            .addFormDataPart("email", data.email)
+            .addFormDataPart("phone", "${data.prefixPhone}$phone")
+            .addFormDataPart("address", data.address)
+            .addFormDataPart("latitude", data.latitude)
+            .addFormDataPart("longitude", data.longitude)
+            .addFormDataPart("companyName", data.companyName)
+            .addFormDataPart("generalNotes", data.notes)
+            .addFormDataPart("gender", data.gender.lowercase())
+            .addFormDataPart("IDNumber", data.idNumber)
+
+        data.idNumberPhoto?.let {
+            // multipart body image for send file
+            val filePart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "image",
+                it.name.toString(),
+                it.asRequestBody("image/png".toMediaTypeOrNull())
+            )
+            requestBody.addPart(filePart)
+        }
+
+        return resourceMapper {
+            service.updateLead(id, requestBody.build()).status.equals(Statics.SUCCESS)
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.achsanit.gxsales.data.MainRepository
 import com.achsanit.gxsales.data.local.entity.CreateLeadData
+import com.achsanit.gxsales.data.local.entity.DetailLeadEntity
 import com.achsanit.gxsales.utils.LeadSettings
 import com.achsanit.gxsales.utils.Resource
 import com.achsanit.gxsales.utils.isValidEmail
@@ -53,6 +54,9 @@ class AddLeadViewModel(private val mainRepository: MainRepository) : ViewModel()
 
     private val _createLeadState: MutableSharedFlow<Resource<Boolean>> = MutableSharedFlow()
     val createLeadState = _createLeadState.asSharedFlow()
+
+    private val _detailLeadState: MutableSharedFlow<Resource<DetailLeadEntity>> = MutableSharedFlow()
+    val detailLeadState = _detailLeadState.asSharedFlow()
 
     private val _buttonNextState = MutableStateFlow(false)
     val buttonNextState = _buttonNextState.asStateFlow()
@@ -202,12 +206,61 @@ class AddLeadViewModel(private val mainRepository: MainRepository) : ViewModel()
                     _mainData.update { it.copy(notes = event.text) }
                 }
                 is UIEvent.OnCreateLead -> {
-                    _createLeadState.emit(Resource.Loading())
-                    _createLeadState.emit(mainRepository.createLead(mainData.value))
+                    if (event.idLead > 0) {
+                        _createLeadState.emit(Resource.Loading())
+                        _createLeadState.emit(mainRepository.updateLead(event.idLead, mainData.value))
+                    } else {
+                        _createLeadState.emit(Resource.Loading())
+                        _createLeadState.emit(mainRepository.createLead(mainData.value))
+                    }
+                }
+                is UIEvent.OnGetDetailLead -> {
+                    _detailLeadState.emit(Resource.Loading())
+                    _detailLeadState.emit(mainRepository.getDetailLead(event.idLead))
                 }
             }
         }
         validateInput()
+    }
+
+    fun updateDetailData(data: DetailLeadEntity) {
+        viewModelScope.launch {
+            _mainData.update {  mainData ->
+                mainData.copy(
+                    branchOfficeId = data.branchId,
+                    probabilityId = data.probabilityId,
+                    typeId = data.typeId,
+                    channelId = data.channelId,
+                    mediaId = data.mediaId,
+                    sourceId = data.sourceId,
+                    statusId = data.statusId,
+                    fullName = data.fullName,
+                    email = data.email,
+                    prefixPhone = "+62",
+                    phone = data.phone,
+                    address = data.address,
+                    latitude = data.latitude,
+                    longitude = data.longitude,
+                    companyName = "Global Xtreme",
+                    gender = data.gender,
+                    idNumber = data.idNumber,
+                    idNumberPhoto = null,
+                    notes = data.notes
+                )
+            }
+            selectedDropdownItem.update { selected ->
+                selected.copy(
+                    branchOffice = data.branchOfficeName,
+                    leadType = data.typeName,
+                    leadChannel = data.channelName,
+                    leadMedia = data.mediaName,
+                    leadSource = data.sourceName,
+                    leadStatus = data.statusName,
+                    leadProbability = data.probabilityName,
+                    prefixPhone = "+62"
+                )
+            }
+        }
     }
 
     private fun settingsHashMapGetValue(
@@ -341,6 +394,7 @@ class AddLeadViewModel(private val mainRepository: MainRepository) : ViewModel()
         data class OnLeadStatusChanged(val text: String): UIEvent
         data class OnLeadProbabilityChanged(val text: String): UIEvent
         data class OnNotesChanged(val text: String): UIEvent
-        data object OnCreateLead: UIEvent
+        data class OnCreateLead(val idLead: Int): UIEvent
+        data class OnGetDetailLead(val idLead: Int): UIEvent
     }
 }
