@@ -10,6 +10,7 @@ import com.achsanit.gxsales.ui.features.lead.add.AddLeadViewModel
 import com.achsanit.gxsales.ui.features.lead.show.LeadsViewModel
 import com.achsanit.gxsales.ui.features.login.LoginViewModel
 import com.achsanit.gxsales.ui.features.logout.LogoutViewModel
+import com.achsanit.gxsales.ui.features.shop.ShopViewModel
 import com.achsanit.gxsales.utils.CustomInterceptor
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
@@ -68,4 +69,5 @@ val mainModule = module {
     viewModel { LogoutViewModel(get()) }
     viewModel { LeadsViewModel(get()) }
     viewModel { AddLeadViewModel(get()) }
+    viewModel { ShopViewModel() }
 }

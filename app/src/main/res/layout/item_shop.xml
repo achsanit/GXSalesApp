@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingHorizontal="@dimen/medium_space">
+
+    <ImageView
+        android:id="@+id/iv_shop_item"
+        android:layout_width="@dimen/size_84"
+        android:layout_height="@dimen/size_84"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:layout_marginStart="@dimen/size_16"
+        style="@style/Title.medium"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_shop_item"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="A810R AC1200 Router" />
+
+    <TextView
+        android:id="@+id/tv_price_item"
+        style="@style/Title.medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_16"
+        android:textColor="@color/primary_yellow"
+        android:textSize="@dimen/text_14"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_shop_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_title"
+        tools:ignore="TextContrastCheck"
+        tools:text="Rp 56.999.999" />
+
+    <TextView
+        android:id="@+id/tv_stock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_16"
+        android:layout_marginTop="@dimen/extra_small_space"
+        android:textStyle="normal"
+        android:textColor="@color/gray_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_shop_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_price_item"
+        tools:text="Stock : 3 Pcs" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_16"
+        android:layout_marginTop="@dimen/small_space"
+        android:textStyle="normal"
+        android:textColor="@color/gray_500"
+        app:layout_constraintStart_toEndOf="@id/iv_shop_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_stock"
+        tools:text="Type : Onu" />
+
+    <View
+        android:id="@+id/v_divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/size_8"
+        android:background="@color/gray_500"
+        app:layout_constraintTop_toTopOf="@id/tv_type"
+        app:layout_constraintBottom_toBottomOf="@id/tv_type"
+        app:layout_constraintStart_toEndOf="@id/tv_type" />
+
+    <TextView
+        android:id="@+id/tv_w_tax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_8"
+        android:textStyle="normal"
+        android:textColor="@color/gray_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/v_divider"
+        app:layout_constraintTop_toTopOf="@id/tv_type"
+        tools:text="w/Tax: Rp 56.600 (11%)" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/size_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/dashed_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_w_tax" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
