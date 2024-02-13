@@ -88,4 +88,10 @@
     <string name="text_edit">Edit</string>
     <string name="text_delete">Delete</string>
     <string name="text_edit_delete_message_dialog">Do you want to edit or delete this item?</string>
+    <string name="text_shop_item">Shop Item</string>
+    <string name="text_price_placeholder">Rp %s / pcs</string>
+    <string name="text_stock_placeholder">Stock : %s Pcs</string>
+    <string name="text_type_placeholder">Type : %s</string>
+    <string name="text_tax_placeholder">w/Tax: Rp %s (%s)</string>
+    <string name="tex_search">Search...</string>
 </resources>
