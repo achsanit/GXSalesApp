@@ -1,5 +1,6 @@
 package com.achsanit.gxsales.data.network.service
 
+import com.achsanit.gxsales.data.network.response.DetailLeadResponse
 import com.achsanit.gxsales.data.network.response.LeadsResponse
 import com.achsanit.gxsales.data.network.response.GetProfileResponse
 import com.achsanit.gxsales.data.network.response.LeadsDashboardResponse
@@ -55,6 +56,17 @@ interface GxService {
 
     @POST("leads")
     suspend fun createLead(
+        @Body body: RequestBody
+    ): MetaResponse
+
+    @GET("leads/{id}")
+    suspend fun getDetailLead(
+        @Path("id") idLead: Int,
+    ): DetailLeadResponse
+
+    @POST("leads/{id}/update")
+    suspend fun updateLead(
+        @Path("id") idLead: Int,
         @Body body: RequestBody
     ): MetaResponse
 

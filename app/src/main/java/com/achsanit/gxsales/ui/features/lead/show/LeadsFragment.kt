@@ -107,7 +107,9 @@ class LeadsFragment : Fragment() {
         SettingLeadDialogFragment(
             messageTitle = data.fullName,
             onFirstOptionClick = {
-                Toast.makeText(requireContext(), "edit", Toast.LENGTH_SHORT).show()
+                val action = LeadsFragmentDirections.actionNavProspectToCreateUpdateLeadFragment()
+                    .setIdLead(data.id)
+                findNavController().navigate(action)
             },
             onSecondOptionClick = {
                 viewModel.deleteLead(data.id)

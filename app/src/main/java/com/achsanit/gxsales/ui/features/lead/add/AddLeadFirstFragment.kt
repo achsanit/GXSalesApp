@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.core.net.toUri
 import androidx.core.widget.doOnTextChanged
@@ -14,8 +15,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.achsanit.gxsales.R
 import com.achsanit.gxsales.data.local.entity.CreateLeadData
+import com.achsanit.gxsales.data.local.entity.DetailLeadEntity
 import com.achsanit.gxsales.ui.features.lead.add.AddLeadViewModel.UIEvent.*
 import com.achsanit.gxsales.databinding.FragmentFirstAddLeadBinding
 import com.achsanit.gxsales.ui.dialog.DiscardConfirmDialogFragment
@@ -41,6 +44,7 @@ class AddLeadFirstFragment : Fragment() {
     private var _binding: FragmentFirstAddLeadBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AddLeadViewModel by activityViewModel()
+    private val navArgs: AddLeadFirstFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +61,10 @@ class AddLeadFirstFragment : Fragment() {
                 findNavController().navigateUp()
             }.show(childFragmentManager, DiscardConfirmDialogFragment.TAG)
         }
+
+        if (navArgs.idLead > 0) {
+            viewModel.dispatch(OnGetDetailLead(navArgs.idLead))
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,8 +79,10 @@ class AddLeadFirstFragment : Fragment() {
     private fun setUpView() {
         with(binding) {
             btnNext.setOnClickListener {
-                findNavController()
-                    .navigate(R.id.action_createUpdateLeadFragment_to_addLeadSecondFragment)
+                val action = AddLeadFirstFragmentDirections
+                    .actionCreateUpdateLeadFragmentToAddLeadSecondFragment()
+                    .setIdLead(navArgs.idLead)
+                findNavController().navigate(action)
             }
 
             cvAddIdentityImage.setOnClickListener { openImagePicker() }
@@ -130,7 +140,7 @@ class AddLeadFirstFragment : Fragment() {
 
                 if (gender.isNotEmpty()) {
                     rbGroup.check(
-                        if (gender == "Male")
+                        if (gender == "Male" || gender == "male")
                             R.id.rb_male else R.id.rb_female
                     )
                 }
@@ -181,6 +191,48 @@ class AddLeadFirstFragment : Fragment() {
                     binding.btnNext.setEnable(requireContext(), it)
                 }
             }
+        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.detailLeadState.collect(::detailLeadStateCollector)
+            }
+        }
+    }
+
+    private fun detailLeadStateCollector(data: Resource<DetailLeadEntity>) {
+        with(binding) {
+            data.collect(
+                onLoading = {
+                    pbDetail.makeVisible()
+                },
+                onSuccess = {
+                    pbDetail.makeGone()
+                    it?.let { data ->
+                        viewModel.updateDetailData(data)
+
+                        dropdownBranch.setText(data.branchOfficeName, false)
+                        edtFullName.setText(data.fullName)
+                        edtEmail.setText(data.email)
+                        edtCellPhone.setText(data.phone)
+                        edtLatitude.setText(data.latitude)
+                        edtLongitude.setText(data.longitude)
+                        edtAddress.setText(data.address)
+                        edtIdentityNumber.setText(data.idNumber)
+                        if (data.gender.isNotEmpty()) {
+                            rbGroup.check(
+                                if (data.gender == "Male" || data.gender == "male")
+                                    R.id.rb_male else R.id.rb_female
+                            )
+                        }
+                    }
+                    Toast.makeText(requireContext(), "Get detail data success", Toast.LENGTH_SHORT)
+                        .show()
+                },
+                onError = { s: String?, i: Int ->
+                    pbDetail.makeGone()
+                    onNetworkEvent(i, s)
+                }
+            )
         }
     }
 
@@ -236,17 +288,21 @@ class AddLeadFirstFragment : Fragment() {
     }
 
     private fun onCallBackSelectLocation() {
-        findNavController().currentBackStackEntry?.savedStateHandle
-            ?.get<LatLng>(MapsFragment.SELECTED_LOCATION_KEY)?.let { latLng ->
-                val selectedAddress = getAddress(latLng.latitude, latLng.longitude)
+        val stateHandle = findNavController().currentBackStackEntry?.savedStateHandle
+        stateHandle?.getLiveData<LatLng>(MapsFragment.SELECTED_LOCATION_KEY)?.let { latLng ->
+            latLng.observe(viewLifecycleOwner) {
+                val selectedAddress = getAddress(it.latitude, it.longitude)
                 viewModel.dispatch(
                     OnLocationChanged(
                         address = selectedAddress,
-                        latitude = latLng.latitude.toString(),
-                        longitude = latLng.longitude.toString()
+                        latitude = it.latitude.toString(),
+                        longitude = it.longitude.toString()
                     )
                 )
+                binding.edtAddress.setText(selectedAddress)
             }
+        }
+        stateHandle?.remove<LatLng>(MapsFragment.SELECTED_LOCATION_KEY)
     }
 
     private fun openMaps() {
@@ -287,6 +343,7 @@ class AddLeadFirstFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setUpView()
+        onCallBackSelectLocation()
     }
 
     override fun onDestroy() {

@@ -19,7 +19,11 @@
         android:id="@+id/nav_prospect"
         android:name="com.achsanit.gxsales.ui.features.lead.show.LeadsFragment"
         android:label="fragment_leads"
-        tools:layout="@layout/fragment_leads" />
+        tools:layout="@layout/fragment_leads" >
+        <action
+            android:id="@+id/action_nav_prospect_to_createUpdateLeadFragment"
+            app:destination="@id/createUpdateLeadFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createUpdateLeadFragment"
         android:name="com.achsanit.gxsales.ui.features.lead.add.AddLeadFirstFragment"
@@ -34,12 +38,21 @@
         <action
             android:id="@+id/action_createUpdateLeadFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
+        <argument
+            android:name="idLead"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/addLeadSecondFragment"
         android:name="com.achsanit.gxsales.ui.features.lead.add.AddLeadSecondFragment"
         android:label="fragment_second_add_led"
-        tools:layout="@layout/fragment_second_add_lead" />
+        tools:layout="@layout/fragment_second_add_lead" >
+        <argument
+            android:name="idLead"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
     <fragment
         android:id="@+id/imageViewerFragment"
         android:name="com.achsanit.gxsales.ui.features.lead.add.imageviewer.ImageViewerFragment"
